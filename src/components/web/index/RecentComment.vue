@@ -9,10 +9,10 @@
         <a-space>
           <el-avatar size="small" :src="item.avatar"></el-avatar>
           <span style="font-size: 16px;color: #303133">{{ item.nickname }}</span>
-          <span>{{ item.commentTime }}</span>
+          <span>{{ item.createTime }}</span>
         </a-space>
         <br>
-        <span><i class="el-icon-chat-dot-square"></i> {{ item.commentContent }}</span>
+        <span><i class="el-icon-chat-dot-square"></i> {{ item.content }}</span>
         <a-divider dashed v-show="index < commentList.length-1" />
       </li>
     </div>
@@ -38,8 +38,8 @@ export default {
         orderBy: 'comment_time desc'
       }
       getAllList(param).then(resp => {
-        // console.log(resp);
-        this.commentList = resp.data.rows;
+        console.log(resp);
+        this.commentList = resp.data;
       })
     }
   }
@@ -62,7 +62,7 @@ export default {
         list-style: none;
       }
     }
-    
+
   }
 
 </style>

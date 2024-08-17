@@ -18,10 +18,10 @@
       <a-timeline mode="alternate">
         <a-timeline-item v-for="(item, index) in messageList" :key="index"  :class="index % 2 == 0 ? 'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeInLeft'">
           <img slot="dot" :src="item.avatar" style="width: 20px;height: 20px">
-          <span style="font-size: 14px;">{{ item.commentTime }}</span>
+          <span style="font-size: 14px;">{{ item.createTime }}</span>
           <span style="font-weight: bold ">{{ item.nickname }}</span>
           <br>
-          <span style="font-size: 14px">{{ item.commentContent }}</span>
+          <span style="font-size: 14px">{{ item.content }}</span>
         </a-timeline-item>
       </a-timeline>
     </div>

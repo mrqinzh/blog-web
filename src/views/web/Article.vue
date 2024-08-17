@@ -19,13 +19,13 @@
         <span><i class="el-icon-caret-right"></i></span>
       </li>
     </ul>
-    
+
     <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
       <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16">
         <!-- 时间线 -->
         <div style="margin: 50px 0px 30px 0px;" v-loading="loading">
           <el-timeline style="min-height: 720px">
-            <el-timeline-item 
+            <el-timeline-item
             class="animate__animated animate__fadeIn"
             size="large"
             :color="'#409EFF'">
@@ -34,8 +34,8 @@
               </div>
             </el-timeline-item>
             <el-timeline-item
-            :timestamp="allBlogs[index].articleUpdateTime" 
-            placement="top" 
+            :timestamp="allBlogs[index].articleUpdateTime"
+            placement="top"
             size="large"
             :color="'#409EFF'"
             v-for="(item, index) in allBlogs" :key="index">
@@ -141,8 +141,8 @@ export default {
     loadBlogs() {
       list(this.currentPage, this.pageSize, this.condition).then( resp => {
         console.log(resp);
-        this.allBlogs = resp.data.rows;
-        this.totalCount = resp.data.totalCount; //获取数据行数
+        this.allBlogs = resp.data.list;
+        this.totalCount = resp.data.total; //获取数据行数
         this.loading = false;
       })
     },
@@ -162,7 +162,7 @@ export default {
     // console.log(this.condition);
     this.loadBlogs();
   },
-  
+
 }
 </script>
 
@@ -184,7 +184,7 @@ export default {
       padding: 10px 5px 10px 15px
     }
   }
-  
+
   .chooseType {
     position: fixed;
     top: 100px;

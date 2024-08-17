@@ -100,7 +100,7 @@
             </el-pagination>
           </div>
         </el-col>
-        
+
         <!-- 中间右侧个人信息部分 -->
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <div class="animate__animated animate__fadeInRight">
@@ -109,7 +109,7 @@
             <!-- 左边个人信息简介 -->
             <div class="user-card transition-card">
               <!-- 头像 -->
-              <el-avatar :src="user.avatar" :size="100"></el-avatar>  
+              <el-avatar :src="user.avatar" :size="100"></el-avatar>
               <!-- 姓名、座右铭 -->
               <div>
                 <mallki :text="user.name" style="font-family: STKaiti;"></mallki><br>
@@ -136,10 +136,10 @@
             <recent-comment class="transition-card"></recent-comment>
           </div>
         </el-col>
-        
+
       </el-col>
     </el-row>
-  
+
     <!-- 分割线 -->
     <el-divider content-position="right"><i class="el-icon-wind-power"></i></el-divider>
 
@@ -170,7 +170,7 @@ import { list } from '@/api/article'
         loading: true,
         // 抽屉
         drawer: false,
-        
+
         // 用户信息
         user: {
           name: '秦志宏',
@@ -200,13 +200,13 @@ import { list } from '@/api/article'
       loadBlogs() {
         list(this.currentPage, this.pageSize, this.condition).then(resp => {
           // console.log(resp);
-          resp.data.rows.forEach(e => {
+          resp.data.list.forEach(e => {
             if (!e.articleCoverImg) {
               e.articleCoverImg = 'http://img.mrqinzh.com/null.jpg'
             }
           });
-          this.articles = resp.data.rows;
-          this.totalCount = resp.data.totalCount; //获取数据行数
+          this.articles = resp.data.list;
+          this.totalCount = resp.data.total; //获取数据行数
           this.loading = false;
         })
       },
@@ -238,12 +238,12 @@ import { list } from '@/api/article'
       this.loadBlogs();
       this.countTime(this.start_time);
     },
-    
+
   }
 </script>
 
 <style lang="scss" scoped>
-  
+
   /* 中间博客卡片 */
   .blog-card {
     margin: 30px auto;
@@ -283,7 +283,7 @@ import { list } from '@/api/article'
       border: 1px solid #EBEEF5;
       border-radius: 15px;
     }
-    
+
     .foot {
       padding: 0px 0px 5px 15px;
       font-size: 15px;

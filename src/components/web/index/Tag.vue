@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
       <span v-for="(tag, index) in tags" :key="index">
-        <a-tag :color="index%2===0 ? index%3===0 ? 'blue' : 'purple' : 'green'" @click="searchByTag(tag.tagName)">{{ tag.tagName }}</a-tag>
+        <a-tag :color="index%2===0 ? index%3===0 ? 'blue' : 'purple' : 'green'" @click="searchByTag(tag.name)">{{ tag.name }}</a-tag>
         <a-divider type="vertical" />
       </span>
     </div>

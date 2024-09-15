@@ -1,5 +1,17 @@
 import request from '@/utils/request'
 
+
+export function getPage(data) {
+  // export function getAllList(currentPage, pageSize, condition, searchParam) {
+    // let url = `/comment/list?currentPage=${currentPage}&pageSize=${pageSize}&condition=${condition}`;
+    return request({
+      url: `/comment/page`,
+      method: 'get',
+      params: data
+    })
+  }
+
+
 export function getAllList(data) {
 // export function getAllList(currentPage, pageSize, condition, searchParam) {
   // let url = `/comment/list?currentPage=${currentPage}&pageSize=${pageSize}&condition=${condition}`;

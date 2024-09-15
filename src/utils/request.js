@@ -3,6 +3,7 @@ import { MessageBox } from 'element-ui'
 import { message } from 'ant-design-vue'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+import router from '@/router/index'
 
 // create an axios instance
 const service = axios.create({
@@ -14,6 +15,17 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
+
+    // console.log(router.currentRoute.fullPath)
+    var baseUrl = config.baseURL
+    var currPath = router.currentRoute.fullPath
+    if (currPath.startsWith('/admin')) {
+      baseUrl = config.baseURL + '/admin-api'
+   } else {
+      baseUrl = config.baseURL + '/app-api'
+   }
+   config.baseURL = baseUrl
+
     // do something before request is sent
 
     if (store.getters.token) {
@@ -47,7 +59,7 @@ service.interceptors.response.use(
     const res = response.data
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 200) {
+    if (res.code !== 0) {
       message.error(res.msg || `error code: ${res.code}`)
 
       // 40004: Illegal token; 40003: Token expired;

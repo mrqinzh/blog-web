@@ -45,11 +45,11 @@ export default {
   },
   methods: {
     getConfigData() {
-      let configKeys = 'PROJECT_START_TIME, PROJECT_FIRST_USE_TIME, RECORD_CODE, ICP';
+      let configKeys = 'PROJECT_START_TIME,PROJECT_FIRST_USE_TIME,RECORD_CODE,ICP';
       initSystemConfigs(configKeys).then(resp => {
         this.resultMap = resp;
       })
-      
+
     }
   }
 }
@@ -83,6 +83,6 @@ export default {
       padding-top: 50px;
     }
   }
-  
-  
+
+
 </style>

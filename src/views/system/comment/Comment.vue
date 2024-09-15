@@ -36,34 +36,34 @@
       v-loading="dataListLoading">
       <el-table-column
         prop="id"
-        label="评论编号">
+        label="编号">
       </el-table-column>
       <el-table-column
         ref="avatar"
-        label="用户头像">
+        label="头像">
         <template slot-scope="scope">
           <el-avatar :src="scope.row.avatar"></el-avatar>
         </template>
       </el-table-column>
       <el-table-column
         prop="nickname"
-        label="用户昵称">
+        label="昵称">
       </el-table-column>
       <el-table-column
         prop="ip"
-        label="用户ip">
+        label="ip">
       </el-table-column>
       <el-table-column
-        prop="commentContent"
-        label="评论内容">
+        prop="content"
+        label="内容">
       </el-table-column>
       <el-table-column
         prop="articleId"
-        label="所属文章编号">
+        label="文章编号">
       </el-table-column>
       <el-table-column
-        prop="commentTime"
-        label="评论时间">
+        prop="createTime"
+        label="时间">
       </el-table-column>
       <el-table-column
         prop="type"
@@ -91,7 +91,8 @@
 </template>
 
 <script>
-import { getAllList } from '@/api/comment';
+import { getPage } from '@/api/comment';
+import {getCommentTypeLabel, getCommentStatusLabel} from '@/utils/biz/comment/comment-enums'
 export default {
   data() {
     return {
@@ -140,13 +141,14 @@ export default {
         endTime: this.searchForm.time[1],
       }
       // console.log(param);
-      getAllList(param).then(resp => {
+      getPage(param).then(resp => {
         // console.log(resp)
-        this.dataList = resp.data.rows;
+        this.dataList = resp.data.list;
         this.dataList.forEach(e => {
-          e.type = e.type == 1 ? '评论' : '留言'
+          e.type = getCommentTypeLabel(e.type);
+          e.status = getCommentStatusLabel(e.status);
         })
-        this.totalCount = resp.data.totalCount;
+        this.totalCount = resp.data.total;
         this.dataListLoading = false;
       })
     },

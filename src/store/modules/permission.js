@@ -5,7 +5,7 @@ import Layout from '@/layout'
 /**
  * 静态路由懒加载
  * @param view  格式必须为 xxx/xxx 开头不要加斜杠
- * @returns 
+ * @returns
  */
 export const loadView = (view) => {
   return () => Promise.resolve(require(`@/views/${view}`))
@@ -19,9 +19,9 @@ export const loadView = (view) => {
 export function generaMenu(routes, data) {
   data.forEach(item => {
     const menu = {
-      path: item.menuPath, 
-      component: item.parentId === 0 ? Layout : loadView(item.componentPath), 
-      hidden: item.hidden === 0, // 状态为0的隐藏
+      path: item.menuPath,
+      component: item.parentId === '0' ? Layout : loadView(item.componentPath),
+      hidden: item.hidden === '0', // 状态为0的隐藏
       redirect: item.redirect,
       children: [],
       name: item.componentName,

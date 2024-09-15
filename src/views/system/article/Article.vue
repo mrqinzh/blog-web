@@ -116,7 +116,7 @@ export default {
     },
     resetList() {
       this.dataForm.key = '';
-      this.currentPage = 1; 
+      this.currentPage = 1;
       this.pageSize = 10;
       this.condition = '';
       this.getDataList();
@@ -126,12 +126,12 @@ export default {
       this.dataListLoading = true;
       list(this.currentPage, this.pageSize, this.condition).then(resp => {
         // console.log(resp);
-        this.dataList = resp.data.rows;
+        this.dataList = resp.data.list;
         this.dataList.forEach(e => {
           e.articleTitle = e.articleTitle.substring(0, 20);
           e.articleSummary = e.articleSummary.substring(0, 35) + '......';
         })
-        this.totalCount = resp.data.totalCount;
+        this.totalCount = resp.data.total;
         this.dataListLoading = false;
       })
     },

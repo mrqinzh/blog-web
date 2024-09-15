@@ -14,7 +14,7 @@
           <!-- 文章头区域 -->
           <div style="font-size: 15px;">
             <h1 style="text-align: center;font-size: 20px;">{{article.articleTitle}}</h1>
-            
+
             <div style="margin-top: 20px;text-align: right;">
               <a-space>
                   <a-tag color="#87d068"> 笔记 </a-tag>
@@ -23,7 +23,7 @@
               </a-space>
             </div>
           </div>
-          
+
           <!-- 文章内容 -->
           <div class="article-main-content" v-html="content"></div>
 
@@ -51,7 +51,7 @@
                 <span class="name-text">{{ item.nickname}}</span>
                 <span style="font-size: 12px;color: #909399">{{ item.commentTime}}</span>
               </a-space>
-              
+
               <p style="color: #303133">
                 <i class="el-icon-chat-dot-round"></i>：{{ item.commentContent}}. . .
                 <br>
@@ -80,14 +80,14 @@
                 </blockquote>
               </div>
             </div>
-              
+
 
           </div>
         </div>
       </el-col>
     </el-row>
   </div>
-  
+
 </template>
 
 <script>
@@ -177,6 +177,7 @@ export default {
     },
     // 提交评论内容
     addComment(val) {
+      console.log(val)
       if (this.nickname === '') {
         this.$message.error('你还没有输入昵称哦 => `_`');
         return;
@@ -211,7 +212,7 @@ export default {
         }
       })
     }
-    
+
   },
   mounted() {
     this.currentArticleId = this.$route.params.articleId;
@@ -258,7 +259,7 @@ export default {
         border-left: 2px solid #409EFF;
         // background-color: #F2F6FC;
       }
-      
+
     }
     .name-text{
       font-size: 17px;
@@ -347,7 +348,7 @@ export default {
     table td:last-child {
       margin-bottom: 0;
     }
-    
+
 
   }
   pre.hljs {

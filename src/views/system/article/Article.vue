@@ -21,41 +21,41 @@
         width="55">
       </el-table-column> -->
       <el-table-column
-        prop="articleTitle"
+        prop="title"
         label="文章题目"
         width="250">
       </el-table-column>
       <el-table-column
-        prop="articleAuthor"
+        prop="author"
         label="作者名"
         width="100">
       </el-table-column>
       <el-table-column
-        prop="articleSummary"
+        prop="summary"
         label="文章摘要">
       </el-table-column>
       <el-table-column
-        prop="articleUpdateTime"
+        prop="updateTime"
         label="最后修改时间"
         width="170">
       </el-table-column>
       <el-table-column
-        prop="articleCreateTime"
+        prop="createTime"
         label="发布时间"
         width="170">
       </el-table-column>
       <el-table-column
-        prop="articleType"
+        prop="type"
         label="是否原创"
         width="100">
       </el-table-column>
       <el-table-column
-        prop="articleTag"
+        prop="tag"
         label="文章标签"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="articleViews"
+        prop="views"
         label="浏览量"
         width="70">
       </el-table-column>
@@ -128,8 +128,8 @@ export default {
         // console.log(resp);
         this.dataList = resp.data.list;
         this.dataList.forEach(e => {
-          e.articleTitle = e.articleTitle.substring(0, 20);
-          e.articleSummary = e.articleSummary.substring(0, 35) + '......';
+          e.title = e.title.substring(0, 20);
+          e.summary = e.summary.substring(0, 35) + '......';
         })
         this.totalCount = resp.data.total;
         this.dataListLoading = false;

@@ -18,26 +18,26 @@
         label="用户编号">
       </el-table-column>
       <el-table-column
-        prop="userRealName"
+        prop="realName"
         label="用户姓名">
       </el-table-column>
       <el-table-column
-        prop="userNickname"
+        prop="nickname"
         label="用户昵称">
       </el-table-column>
       <el-table-column
-        ref="userAvatar"
+        ref="avatar"
         label="用户头像">
         <template slot-scope="scope">
-          <el-avatar :src="scope.row.userAvatar"></el-avatar>
+          <el-avatar :src="scope.row.avatar"></el-avatar>
         </template>
       </el-table-column>
       <el-table-column
-        prop="telephone"
+        prop="mobile"
         label="联系电话">
       </el-table-column>
       <el-table-column
-        prop="userEmail"
+        prop="email"
         label="用户邮箱">
       </el-table-column>
       <el-table-column
@@ -100,8 +100,8 @@ export default {
       this.dataListLoading = true;
       list(this.currentPage, this.pageSize, '').then(resp => {
         // console.log(resp);
-        this.dataList = resp.data.rows;
-        this.totalCount = resp.data.totalCount;
+        this.dataList = resp.data.list;
+        this.totalCount = resp.data.total;
         this.dataListLoading = false;
       })
     },

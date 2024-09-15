@@ -20,7 +20,7 @@
           label="角色id">
         </el-table-column>
         <el-table-column
-          prop="roleName"
+          prop="description"
           label="角色名">
         </el-table-column>
         <el-table-column
@@ -60,7 +60,7 @@ export default {
       }
       getRoleList(param).then(resp => {
         // console.log(resp);
-        this.roleDataList = resp.data.rows;
+        this.roleDataList = resp.data.list;
       })
     }
   }

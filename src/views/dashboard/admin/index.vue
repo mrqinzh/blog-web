@@ -22,8 +22,11 @@
       <el-col :xs="24" :sm="24" :lg="6">
         <box-card />
       </el-col>
+      <el-col :xs="24" :sm="24" :lg="9">
+        <login-log-card />
+      </el-col>
     </el-row>
-    
+
   </div>
 </template>
 
@@ -34,6 +37,7 @@ import LineChart from './components/LineChart'
 import PieChart from './components/PieChart'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+import LoginLogCard from '@/components/LoginLogCard'
 
 const lineChartData = {
   newVisitis: {
@@ -62,7 +66,8 @@ export default {
     LineChart,
     PieChart,
     TodoList,
-    BoxCard
+    BoxCard,
+    LoginLogCard // 登录日志卡片
   },
   data() {
     return {

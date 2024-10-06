@@ -16,6 +16,13 @@ export function getUserById(id) {
   })
 }
 
+export function getUserCount() {
+  return request({
+    url: '/user/count',
+    method: 'get'
+  })
+}
+
 export function list(currentPage, pageSize, condition) {
   let url = `/user/list?currentPage=${currentPage}&pageSize=${pageSize}&condition=${condition}`;
   return request({
